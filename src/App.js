@@ -34,6 +34,8 @@ export default function Board() {
 
   if (winner) {
     status = "Winner: " + winner;
+  } else if (isGameTie(squares)) {
+    status = "No winner.";
   } else {
     status = "Next player: " + (xIsNext ? "X" : "O");
   }
@@ -83,4 +85,14 @@ function calculateWinner(squares) {
   }
 
   return null;
+}
+
+function isGameTie(squares) {
+  for (let i = 0; i < squares.length; i++) {
+    if (!squares[i]) {
+      return false;
+    }
+  }
+
+  return true;
 }
